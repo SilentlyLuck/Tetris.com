@@ -11,7 +11,7 @@
       padding: 0;
       text-align: center;
       background-color: #f2f2f2;
-      min-height: 100vh; /* Ensure body takes full viewport height */
+      min-height: 100vh;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -24,23 +24,23 @@
     }
 
     main {
-      padding: 1rem; /* Reduced padding for smaller screens */
+      padding: 1rem;
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      gap: 1rem; /* Reduced gap */
+      gap: 1rem;
       flex-grow: 1;
     }
 
     button {
-      padding: 8px 16px; /* Slightly smaller buttons */
-      font-size: 14px; /* Smaller font size */
+      padding: 8px 16px;
+      font-size: 14px;
       background-color: #007BFF;
       color: white;
       border: none;
       border-radius: 5px;
       cursor: pointer;
-      min-width: 80px; /* Reduced min-width */
+      min-width: 80px;
     }
 
     button:hover:not(:disabled) {
@@ -54,19 +54,19 @@
 
     .form-container {
       margin: 1rem auto;
-      padding: 1rem; /* Reduced padding */
-      max-width: 300px; /* Smaller form width */
+      padding: 1rem;
+      max-width: 300px;
       background-color: white;
       border-radius: 8px;
       box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
     }
 
-    input[type="text"] {
+    input[type="text"], select {
       width: 100%;
-      padding: 8px; /* Smaller padding */
-      margin: 6px 0; /* Smaller margin */
+      padding: 8px;
+      margin: 6px 0;
       box-sizing: border-box;
-      font-size: 14px; /* Smaller font */
+      font-size: 14px;
     }
 
     .message {
@@ -74,26 +74,26 @@
       font-weight: bold;
       margin: 0.5rem 0;
       min-height: 1.5rem;
-      font-size: 14px; /* Smaller font */
+      font-size: 14px;
     }
 
     .game-container {
       margin: 1rem auto;
-      padding: 1rem; /* Reduced padding */
+      padding: 1rem;
       background-color: white;
       border-radius: 8px;
       box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
       text-align: center;
-      display: none; /* Hidden by default */
-      max-width: 300px; /* Constrain game container width */
+      display: none;
+      max-width: 300px;
     }
 
     canvas {
       border: 2px solid #333;
       background-color: #fff;
       margin-bottom: 0.5rem;
-      width: 200px; /* Reduced canvas width */
-      height: 400px; /* Reduced canvas height */
+      width: 200px;
+      height: 400px;
       display: block;
       margin-left: auto;
       margin-right: auto;
@@ -106,7 +106,7 @@
     .action-buttons {
       display: flex;
       justify-content: center;
-      gap: 8px; /* Reduced gap */
+      gap: 8px;
       margin-bottom: 0.5rem;
     }
 
@@ -114,8 +114,8 @@
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       grid-template-rows: repeat(3, 1fr);
-      gap: 4px; /* Reduced gap */
-      width: 150px; /* Smaller control button grid */
+      gap: 4px;
+      width: 150px;
       margin: 0 auto;
     }
 
@@ -140,15 +140,15 @@
     }
 
     #score {
-      font-size: 16px; /* Smaller font */
+      font-size: 16px;
       font-weight: bold;
       margin-bottom: 0.5rem;
     }
 
     .leaderboard-container {
       margin: 1rem auto;
-      padding: 1rem; /* Reduced padding */
-      max-width: 300px; /* Smaller leaderboard width */
+      padding: 1rem;
+      max-width: 300px;
       background-color: white;
       border-radius: 8px;
       box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
@@ -158,18 +158,18 @@
     .leaderboard-container h3 {
       text-align: center;
       margin-bottom: 0.5rem;
-      font-size: 18px; /* Smaller font */
+      font-size: 18px;
     }
 
     .leaderboard-table {
       width: 100%;
       border-collapse: collapse;
-      font-size: 14px; /* Smaller font */
+      font-size: 14px;
     }
 
     .leaderboard-table th,
     .leaderboard-table td {
-      padding: 6px; /* Reduced padding */
+      padding: 6px;
       border-bottom: 1px solid #ddd;
       text-align: center;
     }
@@ -194,28 +194,28 @@
 
     .modal-content {
       background-color: white;
-      padding: 15px; /* Reduced padding */
+      padding: 15px;
       border-radius: 8px;
       box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
       text-align: center;
-      max-width: 250px; /* Smaller modal */
+      max-width: 250px;
       width: 80%;
     }
 
     .modal-content p {
       margin: 0 0 15px 0;
-      font-size: 16px; /* Smaller font */
+      font-size: 16px;
     }
 
     .modal-buttons {
       display: flex;
       justify-content: center;
-      gap: 8px; /* Reduced gap */
+      gap: 8px;
     }
 
     .modal-buttons button {
-      padding: 6px 12px; /* Smaller buttons */
-      min-width: 60px; /* Smaller min-width */
+      padding: 6px 12px;
+      min-width: 60px;
     }
 
     #cancelButton {
@@ -256,11 +256,16 @@
     <div class="form-container" id="loginForm">
       <h3>Enter Username to Play</h3>
       <input type="text" id="loginUsername" placeholder="Username" required>
+      <select id="difficultySelect">
+        <option value="easy">Easy</option>
+        <option value="hard">Hard</option>
+      </select>
       <button onclick="handlePlay()">Play</button>
     </div>
 
-    <div class="leaderboard-container" id="leaderboardContainer">
-      <h3>Leaderboard</h3>
+    <!-- Modified Leaderboard Section: Two separate leaderboards -->
+    <div class="leaderboard-container" id="easyLeaderboardContainer">
+      <h3>Easy Leaderboard</h3>
       <table class="leaderboard-table">
         <thead>
           <tr>
@@ -269,7 +274,21 @@
             <th>Score</th>
           </tr>
         </thead>
-        <tbody id="leaderboardBody"></tbody>
+        <tbody id="easyLeaderboardBody"></tbody>
+      </table>
+    </div>
+
+    <div class="leaderboard-container" id="hardLeaderboardContainer">
+      <h3>Hard Leaderboard</h3>
+      <table class="leaderboard-table">
+        <thead>
+          <tr>
+            <th>Rank</th>
+            <th>Username</th>
+            <th>Score</th>
+          </tr>
+        </thead>
+        <tbody id="hardLeaderboardBody"></tbody>
       </table>
     </div>
 
@@ -309,9 +328,10 @@
   </footer>
 
   <script>
-    // State to track login
+    // State to track login and difficulty
     let isLoggedIn = false;
     let currentUsername = '';
+    let currentDifficulty = 'easy'; // Default difficulty
 
     // Form-related scripts
     function changeBackground() {
@@ -322,12 +342,14 @@
 
     function handlePlay() {
       const username = document.getElementById('loginUsername').value;
+      const difficulty = document.getElementById('difficultySelect').value;
       const messageDiv = document.getElementById('message');
 
       if (username) {
         isLoggedIn = true;
         currentUsername = username;
-        messageDiv.textContent = `Welcome, ${username}! Enjoy Tetris!`;
+        currentDifficulty = difficulty;
+        messageDiv.textContent = `Welcome, ${username}! Playing on ${difficulty.charAt(0).toUpperCase() + difficulty.slice(1)} mode. Enjoy Tetris!`;
         messageDiv.style.color = '#4CAF50';
         document.getElementById('loginUsername').value = '';
         document.getElementById('gameContainer').style.display = 'block';
@@ -342,24 +364,40 @@
     // Leaderboard functions
     function updateLeaderboard() {
       const leaderboard = JSON.parse(localStorage.getItem('leaderboard')) || [];
-      leaderboard.sort((a, b) => b.score - a.score);
-      const topScores = leaderboard.slice(0, 10);
-      const leaderboardBody = document.getElementById('leaderboardBody');
-      leaderboardBody.innerHTML = '';
-      topScores.forEach((entry, index) => {
+      // Separate scores by difficulty
+      const easyScores = leaderboard.filter(entry => entry.difficulty === 'easy').sort((a, b) => b.score - a.score).slice(0, 10);
+      const hardScores = leaderboard.filter(entry => entry.difficulty === 'hard').sort((a, b) => b.score - a.score).slice(0, 10);
+
+      // Update Easy Leaderboard
+      const easyLeaderboardBody = document.getElementById('easyLeaderboardBody');
+      easyLeaderboardBody.innerHTML = '';
+      easyScores.forEach((entry, index) => {
         const row = document.createElement('tr');
         row.innerHTML = `
           <td>${index + 1}</td>
           <td>${entry.username}</td>
           <td>${entry.score}</td>
         `;
-        leaderboardBody.appendChild(row);
+        easyLeaderboardBody.appendChild(row);
+      });
+
+      // Update Hard Leaderboard
+      const hardLeaderboardBody = document.getElementById('hardLeaderboardBody');
+      hardLeaderboardBody.innerHTML = '';
+      hardScores.forEach((entry, index) => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+          <td>${index + 1}</td>
+          <td>${entry.username}</td>
+          <td>${entry.score}</td>
+        `;
+        hardLeaderboardBody.appendChild(row);
       });
     }
 
-    function saveScore(username, score) {
+    function saveScore(username, score, difficulty) {
       const leaderboard = JSON.parse(localStorage.getItem('leaderboard')) || [];
-      leaderboard.push({ username, score });
+      leaderboard.push({ username, score, difficulty }); // Store difficulty with score
       localStorage.setItem('leaderboard', JSON.stringify(leaderboard));
       updateLeaderboard();
     }
@@ -381,9 +419,9 @@
     // Tetris Game Logic
     const canvas = document.getElementById('tetrisCanvas');
     const ctx = canvas.getContext('2d');
-    const gridSize = 20; // Reduced grid size for smaller canvas
-    canvas.width = 200; // Match CSS width
-    canvas.height = 400; // Match CSS height
+    const gridSize = 20;
+    canvas.width = 200;
+    canvas.height = 400;
     const cols = canvas.width / gridSize;
     const rows = canvas.height / gridSize;
     let board = [];
@@ -391,6 +429,11 @@
     let score = 0;
     let gameInterval = null;
     let isPaused = false;
+
+    const difficultySpeeds = {
+      easy: 1000,
+      hard: 500
+    };
 
     const shapes = [
       [[1, 1, 1, 1]], // I
@@ -507,7 +550,7 @@
         currentPiece = createPiece();
         if (collision(currentPiece.x, currentPiece.y, currentPiece.shape)) {
           if (isLoggedIn && currentUsername) {
-            saveScore(currentUsername, score);
+            saveScore(currentUsername, score, currentDifficulty); // Pass difficulty
           }
           alert('Game Over! Score: ' + score);
           clearInterval(gameInterval);
@@ -521,6 +564,7 @@
           document.getElementById('loginForm').style.display = 'block';
           isLoggedIn = false;
           currentUsername = '';
+          currentDifficulty = 'easy';
         }
       }
       draw();
@@ -552,7 +596,7 @@
         score = 0;
         document.getElementById('score').textContent = `Score: ${score}`;
         currentPiece = createPiece();
-        gameInterval = setInterval(gameLoop, 1000);
+        gameInterval = setInterval(gameLoop, difficultySpeeds[currentDifficulty]);
         document.getElementById('pauseButton').disabled = false;
         document.getElementById('moveLeftButton').disabled = false;
         document.getElementById('moveRightButton').disabled = false;
@@ -574,7 +618,7 @@
 
     function restartGame() {
       if (isLoggedIn && currentUsername && score > 0) {
-        saveScore(currentUsername, score);
+        saveScore(currentUsername, score, currentDifficulty); // Pass difficulty
       }
       clearInterval(gameInterval);
       gameInterval = null;
@@ -589,6 +633,7 @@
       document.getElementById('loginForm').style.display = 'block';
       isLoggedIn = false;
       currentUsername = '';
+      currentDifficulty = 'easy';
     }
 
     document.addEventListener('keydown', (event) => {
